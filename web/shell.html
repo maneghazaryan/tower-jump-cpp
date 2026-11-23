@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Tower Jump - C++ edition</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0e1116; color: #cfd6e0; font-family: system-ui, sans-serif; overflow: hidden; }
+  #wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+  canvas { display: block; max-height: calc(100vh - 36px); max-width: 100vw; aspect-ratio: 540 / 900; touch-action: none; outline: none; }
+  #bar { height: 36px; display: flex; gap: 16px; align-items: center; font-size: 13px; opacity: .75; }
+  #bar a { color: #8ab4ff; text-decoration: none; }
+  #status { position: absolute; top: 45%; width: 100%; text-align: center; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1"></canvas>
+  <div id="bar">
+    <span>C++17 · raylib · WebAssembly</span>
+    <a href="https://github.com/maneghazaryan/tower-jump-cpp">Source on GitHub</a>
+    <a href="https://maneghazaryan.github.io/">Portfolio</a>
+  </div>
+</div>
+<div id="status">Loading…</div>
+<script>
+  var Module = {
+    canvas: document.getElementById('canvas'),
+    setStatus: function (t) { document.getElementById('status').textContent = t || ''; },
+    print: function (t) { console.log(t); },
+    printErr: function (t) { console.error(t); }
+  };
+  window.addEventListener('keydown', function (e) {
+    if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) e.preventDefault();  // keep the page from scrolling
+  });
+</script>
+{{{ SCRIPT }}}
+</body>
+</html>
