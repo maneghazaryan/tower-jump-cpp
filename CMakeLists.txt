@@ -11,6 +11,11 @@ endif()
 option(TJ_BUILD_GAME  "Build the raylib game"           ON)
 option(TJ_BUILD_TESTS "Build unit tests and simulator"  ON)
 
+# CMake 4 rejects dependencies that still declare cmake_minimum_required(< 3.5), e.g. doctest.
+if(NOT DEFINED CMAKE_POLICY_VERSION_MINIMUM)
+  set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
+endif()
+
 include(FetchContent)
 set(FETCHCONTENT_QUIET ON)
 
